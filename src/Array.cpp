@@ -28,7 +28,7 @@ void Array::resize(size_t newCapacity) {
 
     int* temp = new int[newCapacity];
 
-    for(size_t i = 0; i < arrLength - 1; i++) {
+    for(size_t i = 0; i < arrLength; i++) {
         temp[i] = arr[i];
     }
 
@@ -36,6 +36,27 @@ void Array::resize(size_t newCapacity) {
     arr = temp;
 
     arrCapacity = newCapacity;
+}
+
+int Array::at(size_t index) {
+    if(!inBounds(index)) {
+        return -1;
+    }
+
+    return arr[index];
+}
+
+size_t Array::length() {
+    return arrLength;
+}
+
+int Array::pop() {
+    auto const value = arr[arrLength - 1];
+
+    arr[arrLength - 1] = -1;
+    arrLength--;
+
+    return value;
 }
 
 void Array::push(int value) {

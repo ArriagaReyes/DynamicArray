@@ -8,4 +8,4 @@ Array.o: src/Array.cpp include/Array.hpp
 	g++ -c src/Array.cpp
 
 clear:
-	rm *.o output
+	rm *.o build

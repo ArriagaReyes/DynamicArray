@@ -9,7 +9,7 @@ struct Array {
     int deleteAt(size_t);
     int find(int);
     bool insert(size_t, int);
-    size_t isEmpty();
+    bool isEmpty();
     size_t length();
     int pop();
     bool prepend(int);
