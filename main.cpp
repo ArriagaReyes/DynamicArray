@@ -1,34 +1,28 @@
 #include <cstdio>
 #include "./include/Array.hpp"
 
-void printNums(Array& nums, const size_t length) {
-    printf("nums: [ ");
-
-    for(size_t i = 0; i < length; i++) {
-        printf("%d", nums.at(i));
-
-        if((i + 1 < length)) {
-            printf(", ");
-        }
-    }
-
-    printf(" ]\n");
-}
-
 int main() {
-    int array[]{ 6, 3, 9, 24, 1, 69 };
+    int array[]{ 6, 3, 9, 24, 1, 69, 6, 3, 9, 24, 1, 69, 5, 32, 15, 72 };
 
     Array nums;
 
-    for(size_t i = 0; i < 6; i++) {
+    for(size_t i = 0; i < 16; i++) {
         nums.push(array[i]);
     }
 
-    printNums(nums, nums.length());
+    nums.print();
 
-    nums.pop();
+    nums.insert(2, 420);
 
-    printNums(nums, nums.length());
+    nums.prepend(12);
+
+    nums.print();
+
+    for(size_t i = 0; i < 18; i++) {
+        nums.pop();
+    }
+
+    nums.print();
 
     return 0;
 }
