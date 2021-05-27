@@ -1,8 +1,11 @@
+#include <iostream>
 #include <cstdio>
 #include "../include/Array.hpp"
 
+using namespace std;
+
 Array::Array() {
-    printf("Creating dynamic array\n");
+    cout << "Creating dynamic array" << endl;
 
     arrLength = 0;
     arrCapacity = 2;
@@ -10,7 +13,7 @@ Array::Array() {
 }
 
 Array::~Array() {
-    printf("Deleting dynamic array\n");
+    cout << "Deleting dynamic array" << endl;
 
     delete arr;
 }
@@ -32,7 +35,7 @@ void Array::increase() {
 }
 
 void Array::resize(size_t newCapacity) {
-    printf("Resizing array to %d\n", newCapacity);
+    cout << "Resizing array to " << newCapacity << endl; 
 
     int* temp = new int[newCapacity];
 
@@ -103,7 +106,7 @@ bool Array::insert(size_t index, int value) {
         arr[i + 1] = arr[i];
 
         if(index == i) {
-            printf("Inserting %d to Array\n", value);
+            cout << "Inserting " << value << " to array" << endl;
             arr[i] = value;
             arrLength++;
             break;
@@ -132,7 +135,7 @@ int Array::pop() {
 
     auto const value = arr[arrLength - 1];
 
-    printf("Removing last element, %d\n", value);
+    cout << "Removing last element " << value << endl;
     arr[arrLength - 1] = 0;
     arrLength--;
 
@@ -146,18 +149,17 @@ bool Array::prepend(int value) {
 }
 
 void Array::print() {
-    printf("Array has a length of %d. ", arrLength);
-    printf("Array: [ ");
+    cout << "[ ";
 
     for(size_t i = 0; i < arrLength; i++) {
-        printf("%d", at(i));
+        cout << at(i);
 
         if((i + 1 < arrLength)) {
-            printf(", ");
+            cout << ", ";
         }
     }
 
-    printf(" ]\n");
+    cout << " ]" << endl;
 }
 
 void Array::push(int value) {
@@ -165,7 +167,7 @@ void Array::push(int value) {
         increase();
     }
 
-    printf("Pushing %d to Array\n", value);
+    cout << "Pushing " << value << " to array" << endl;
     arr[arrLength] = value;
     arrLength++;
 }
@@ -173,7 +175,7 @@ void Array::push(int value) {
 void Array::remove(int value) {
     for (size_t i = 0; i < arrLength -1; i++) {
         if(value == arr[i]) {
-            printf("Removing %d\n", arr[i]);
+            cout << "Removing " << arr[i] << endl;
             arr[i] = 0;
             arrLength--;
         }
